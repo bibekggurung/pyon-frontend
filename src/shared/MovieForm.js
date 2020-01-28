@@ -1,19 +1,19 @@
 import React from 'react'
 
-const MovieForm = ({ movie, handleSubmit, handleChange }) => (
+const RideForm = ({ ride, handleSubmit, handleChange }) => (
   <form onSubmit={handleSubmit}>
     <label>Title</label>
     <input
       placeholder="A wonderful film"
       name="title"
-      value={movie.title}
+      value={ride.title}
       onChange={handleChange}
     />
 
     <label>Director</label>
     <input
       placeholder="A director of your choice"
-      value={movie.director}
+      value={ride.director}
       name="director"
       onChange={handleChange}
     />
@@ -22,7 +22,7 @@ const MovieForm = ({ movie, handleSubmit, handleChange }) => (
     <input
       placeholder="YYYY-MM-DD"
       type="date"
-      value={movie.year}
+      value={ride.year}
       name="year"
       onChange={handleChange}
     />
@@ -31,4 +31,4 @@ const MovieForm = ({ movie, handleSubmit, handleChange }) => (
   </form>
 )
 
-export default MovieForm
+export default RideForm
