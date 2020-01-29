@@ -9,14 +9,20 @@ const Rides = props => {
   const [rides, setRides] = useState([])
 
   useEffect(() => {
-    axios(`${apiUrl}/rides`)
+    axios({
+      url: `${apiUrl}/rides`,
+      method: 'GET',
+      headers: {
+        'Authorization': `Token token=${props.user.token}`
+      }
+    })
       .then(res => setRides(res.data.rides))
       .catch(console.error)
   }, [])
 
   const ridesJsx = rides.map(ride => (
-    <li key={ride.id}>
-      <Link to={`/rides/${ride.id}`}>{ride.title}</Link>
+    <li key={ride._id}>
+      <Link to={`/rides/${ride._id}`}>{ride.origin}</Link>
     </li>
   ))
 

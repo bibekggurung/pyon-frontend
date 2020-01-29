@@ -1,7 +1,7 @@
 import React from 'react'
 
 const Footer = () => (
-  <p>Built by SEI 06</p>
+  <p>PYON</p>
 )
 
 export default Footer

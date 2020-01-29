@@ -2,28 +2,29 @@ import React from 'react'
 
 const RideForm = ({ ride, handleSubmit, handleChange }) => (
   <form onSubmit={handleSubmit}>
-    <label>Title</label>
+    <label>Origin</label>
     <input
-      placeholder="A wonderful film"
-      name="title"
-      value={ride.title}
+      placeholder="Original location"
+      name="origin"
+      value={ride.origin}
       onChange={handleChange}
     />
 
-    <label>Director</label>
+    <label>Destination</label>
     <input
-      placeholder="A director of your choice"
-      value={ride.director}
-      name="director"
+      placeholder="Destination location"
+      type="text"
+      value={ride.destination}
+      name="destination"
       onChange={handleChange}
     />
 
-    <label>Year</label>
+    <label>Time</label>
     <input
       placeholder="YYYY-MM-DD"
       type="date"
-      value={ride.year}
-      name="year"
+      value={ride.time}
+      name="time"
       onChange={handleChange}
     />
 

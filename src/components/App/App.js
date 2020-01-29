@@ -58,14 +58,14 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
             <ChangePassword alert={this.alert} user={user} />
           )} />
-          <AuthenticatedRoute user={user} path='/rides' render={() => (
+          <AuthenticatedRoute user={user} exact path='/rides' render={() => (
             <Rides alert={this.alert} user={user} />
           )} />
-          <AuthenticatedRoute user={user} path='/ride/:id' render={() => (
-            <Ride alert={this.alert} user={user} />
+          <AuthenticatedRoute user={user} exact path='/rides/:id' render={({ match }) => (
+            <Ride alert={this.alert} user={user} match={match}/>
           )} />
-          <AuthenticatedRoute user={user} path='/ride/:id/edit' render={() => (
-            <RideEdit alert={this.alert} user={user} />
+          <AuthenticatedRoute user={user} exact path='/rides/:id/edit' render={({ match }) => (
+            <RideEdit alert={this.alert} user={user} match={match}/>
           )} />
           <AuthenticatedRoute user={user} path='/create-ride' render={() => (
             <RideCreate alert={this.alert} user={user} />

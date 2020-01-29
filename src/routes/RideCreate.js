@@ -7,7 +7,7 @@ import RideForm from '../shared/RideForm'
 import Layout from '../shared/Layout'
 
 const RideCreate = (props) => {
-  const [ride, setRide] = useState({ title: '', director: '', year: '' })
+  const [ride, setRide] = useState({ origin: '', destination: '', time: '' })
   const [createdRideId, setCreatedRideId] = useState(null)
 
   const handleChange = event => {
@@ -21,9 +21,12 @@ const RideCreate = (props) => {
     axios({
       url: `${apiUrl}/rides`,
       method: 'POST',
+      headers: {
+        'Authorization': `Token token=${props.user.token}`
+      },
       data: { ride }
     })
-      .then(res => setCreatedRideId(res.data.ride.id))
+      .then(res => setCreatedRideId(res.data.ride._id))
       .catch(console.error)
   }
 

@@ -10,14 +10,20 @@ const Ride = (props) => {
   const [deleted, setDeleted] = useState(false)
 
   useEffect(() => {
-    axios(`${apiUrl}/rides/${props.match.params.id}`)
+    axios({
+      url: `${apiUrl}/rides/${props.match.params.id}`,
+      method: 'GET',
+      headers: {
+        'Authorization': `Token token=${props.user.token}`
+      }
+    })
       .then(res => setRide(res.data.ride))
       .catch(console.error)
   }, [])
 
   const destroy = () => {
     axios({
-      url: `${apiUrl}/rides/${props.match.params.id}`,
+      url: `${apiUrl}/rides/${props.match.params._id}`,
       method: 'DELETE'
     })
       .then(() => setDeleted(true))
@@ -34,11 +40,12 @@ const Ride = (props) => {
     } />
   }
 
+  console.log('Ride.js console.', props)
   return (
     <Layout>
-      <h4>{ride.title}</h4>
-      <p>Date relased: {ride.year}</p>
-      <p>Directed by: {ride.director}</p>
+      <h4>{`${ride.origin} to ${ride.destination}`}</h4>
+      <p>Origin: {ride.origin}</p>
+      <p>Destination: {ride.destination}</p>
       <button onClick={destroy}>Delete Ride</button>
       <Link to={`/rides/${props.match.params.id}/edit`}>
         <button>Edit</button>
