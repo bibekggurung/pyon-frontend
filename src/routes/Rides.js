@@ -22,7 +22,7 @@ const Rides = props => {
 
   const ridesJsx = rides.map(ride => (
     <li key={ride._id}>
-      <Link to={`/rides/${ride._id}`}>{ride.origin}</Link>
+      <Link to={`/rides/${ride._id}`}>{`${ride.origin} to ${ride.destination} at ${ride.time}`}</Link>
     </li>
   ))
 

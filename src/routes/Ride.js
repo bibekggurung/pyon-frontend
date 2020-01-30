@@ -23,8 +23,11 @@ const Ride = (props) => {
 
   const destroy = () => {
     axios({
-      url: `${apiUrl}/rides/${props.match.params._id}`,
-      method: 'DELETE'
+      url: `${apiUrl}/rides/${props.match.params.id}`,
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Token token=${props.user.token}`
+      }
     })
       .then(() => setDeleted(true))
       .catch(console.error)

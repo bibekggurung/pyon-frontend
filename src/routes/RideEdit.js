@@ -25,7 +25,7 @@ const RideEdit = (props) => {
   const handleSubmit = event => {
     event.preventDefault()
     axios({
-      url: `${apiUrl}/rides/:id/edit`,
+      url: `${apiUrl}/rides/${props.match.params.id}`,
       method: 'PATCH',
       headers: {
         'Authorization': `Token token=${props.user.token}`
@@ -37,7 +37,7 @@ const RideEdit = (props) => {
   }
 
   if (updated) {
-    return <Redirect to={`/rides/${props.match.params._id}`} />
+    return <Redirect to={`/rides/${props.match.params.id}`} />
   }
 
   return (
